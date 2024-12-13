@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqgfir0eyso8x"]
+
+[ext_resource type="PackedScene" uid="uid://cxrmkxypgbqbr" path="res://assets/blender-exports/scenario/scenario.glb" id="1_7m8bm"]
+[ext_resource type="PackedScene" uid="uid://cs68qe4ptekcl" path="res://assets/blender-exports/safe/safe.glb" id="2_b7c1m"]
+[ext_resource type="PackedScene" uid="uid://n6cbsgbfux3g" path="res://assets/blender-exports/shrimp/shrimp.glb" id="3_gthyi"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="scenario" parent="." instance=ExtResource("1_7m8bm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.68361, 0)
+
+[node name="safe" parent="." instance=ExtResource("2_b7c1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.972157, 0)
+
+[node name="shrimp" parent="." instance=ExtResource("3_gthyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76746, 0.470106, -4.18185)
