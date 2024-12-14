@@ -1,11 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqgfir0eyso8x"]
+[gd_scene load_steps=9 format=3 uid="uid://cqgfir0eyso8x"]
 
 [ext_resource type="PackedScene" uid="uid://c1wp3j1wo4ekt" path="res://scenes/shrimp.tscn" id="2_o1nfg"]
 [ext_resource type="PackedScene" uid="uid://c3xe3bt1lug5v" path="res://scenes/main.tscn" id="3_en4e1"]
+[ext_resource type="PackedScene" uid="uid://ddatrustqgo6j" path="res://scenes/safe.tscn" id="4_2im2f"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_o4ye4"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_eo0ht"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w8bbp"]
+viewport_path = NodePath("safe/Sprite3D2/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47rn0"]
+bg_color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8so1p"]
+bg_color = Color(0.396396, 0.153953, 0.124497, 1)
 
 [node name="Deep Defense" type="Node3D"]
 
@@ -43,10 +53,32 @@ transform = Transform3D(-1.31134e-07, -3, 0, -1.31134e-07, 5.73206e-15, -3, 3, -
 shape = SubResource("WorldBoundaryShape3D_eo0ht")
 
 [node name="Test" parent="." instance=ExtResource("2_o1nfg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.61369, 6.86464, -0.18002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30314, 0.357011, 2.92226)
 
 [node name="head" type="Node3D" parent="Test"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.964151, 0.031704)
 
 [node name="Camera3D" type="Camera3D" parent="Test/head"]
 transform = Transform3D(1, 0, 0, 0, 0.928246, 0.371967, 0, -0.371967, 0.928246, 0, 0.172532, -0.0303719)
+
+[node name="safe" parent="." instance=ExtResource("4_2im2f")]
+unique_name_in_owner = true
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.706436, 0)
+
+[node name="Sprite3D2" type="Sprite3D" parent="safe"]
+transform = Transform3D(-1.63178e-08, 0, -1, 0, 1, 0, 0.373307, 0, -4.37114e-08, 0, 1.83359, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_w8bbp")
+
+[node name="SubViewport" type="SubViewport" parent="safe/Sprite3D2"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1150, 27)
+
+[node name="HealthBar" type="ProgressBar" parent="safe/Sprite3D2/SubViewport"]
+unique_name_in_owner = true
+offset_right = 1152.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_47rn0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8so1p")
+show_percentage = false
