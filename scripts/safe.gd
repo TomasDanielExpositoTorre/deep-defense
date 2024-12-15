@@ -1,7 +1,7 @@
 extends Node3D
 
 var health = 100
-var reachable = false
+var open = false
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var animation: AnimationPlayer = $AnimationPlayer
 
@@ -9,13 +9,9 @@ var reachable = false
 func _ready() -> void:
 	health_bar.value = health
 
-func remove_health(n: int):
+func take_damage(n: int):
 	health -= n
 	health_bar.value = health
-	if health <= 0:
+	if health <= 0 and not open:
+		open = true
 		animation.play("Open")
-		
-
-func _on_timer_timeout() -> void:
-	if health >= 0:
-		remove_health(10)
