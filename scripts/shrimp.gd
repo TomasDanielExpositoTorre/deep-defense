@@ -1,3 +1,9 @@
+"""
+Un camarón muy simpático. Tiene un area de detección moderada,
+se mueve por el suelo y ataca cuerpo a cuerpo con un hacha.
+
+@author: Tomás Daniel Expósito Torre.
+"""
 extends PathFinderEnemy
 
 @onready var nav: NavigationAgent3D = $Navigation
@@ -16,7 +22,7 @@ func _ready():
 	damage = 3
 	speed = 1
 	
-	# Parámetros para el estado "exaltado"
+	# Parámetros para el estado enfurecido
 	ex_speed = 2
 	ex_damage = 7
 	ex_atk_speed = 2
@@ -32,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		var direction = (nav.get_next_path_position() - global_position).normalized()
 		direction.y = 0
 		
-		velocity = direction * (speed if not exalted else ex_speed)
+		velocity = direction * (speed if not enraged else ex_speed)
 	
 		move_and_slide()
 
@@ -54,11 +60,11 @@ func animation_finished(anim_name: StringName) -> void:
 
 func attack(body: Node3D):
 	animation.play("Attack")
-	animation.speed_scale = atk_speed if not exalted else ex_atk_speed
+	animation.speed_scale = atk_speed if not enraged else ex_atk_speed
 	await get_tree().create_timer(1.66 / animation.speed_scale).timeout
 	
 	if body in damage_range.get_overlapping_bodies() and body.has_method("take_damage"):
-		body.take_damage(damage if not exalted else ex_damage)
+		body.take_damage(damage if not enraged else ex_damage)
 
 # ------------------------------------------------------------------------------
 # --------------------------------- DETECCION ----------------------------------
@@ -68,7 +74,7 @@ func detection_entered(body: Node3D) -> void:
 		target = body
 
 func detection_exited(body: Node3D) -> void:
-	if body.name == target.name and not exalted:
+	if not enraged and body.name == target.name:
 		target = safe
 
 # ------------------------------------------------------------------------------

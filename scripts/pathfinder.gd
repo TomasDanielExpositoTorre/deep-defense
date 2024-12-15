@@ -12,7 +12,7 @@ class_name PathFinderEnemy extends CharacterBody3D
 
 # Estadísticas de Enemigo
 var health = 1
-var exalted = false
+var enraged = false
 
 var speed = 1.0
 var damage = 1.0
@@ -24,6 +24,8 @@ var ex_atk_speed = 1.1
 
 # Pathfinding
 @onready var target = %Safe
+@onready var player = %Player
+
 var attacking = false
 
 func _ready():
@@ -42,3 +44,7 @@ func await_mapsync():
 	"""
 	await get_tree().physics_frame
 	set_physics_process(true)
+	
+func enrage():
+	enraged = true
+	target = player

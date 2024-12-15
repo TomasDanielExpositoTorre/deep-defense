@@ -1,3 +1,9 @@
+"""
+La caja fuerte que contiene la formula secreta que
+debemos proteger.
+
+@author: Tomás Daniel Expósito Torre.
+"""
 extends Node3D
 
 var health = 100

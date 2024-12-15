@@ -31,6 +31,7 @@ transform = Transform3D(0.280147, 0.5838, 0.762034, -2.15274e-08, -0.793821, 0.6
 light_energy = 1.3
 
 [node name="Player" parent="." instance=ExtResource("2_o1nfg")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30314, 0.357011, 2.92226)
 
 [node name="head" type="Node3D" parent="Player"]
