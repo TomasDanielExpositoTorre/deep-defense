@@ -1,13 +1,13 @@
 extends Node3D
 
-const SAFE_HEALTH = 100
-var health = SAFE_HEALTH
+var health = 100
+var reachable = false
 @onready var health_bar: ProgressBar = %HealthBar
 @onready var animation: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
-	health_bar.value=10
+	health_bar.value = health
 
 func remove_health(n: int):
 	health -= n
