@@ -413,7 +413,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2o3wq"]
-size = Vector3(2.1763, 2.0191, 2.01868)
+size = Vector3(2.1763, 2.84279, 2.01868)
 
 [node name="safe" type="StaticBody3D"]
 script = ExtResource("1_phc6x")
@@ -473,7 +473,7 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0787811, 0.00912476, -6.10352e-05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0787811, 0.420967, -6.10352e-05)
 shape = SubResource("BoxShape3D_2o3wq")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

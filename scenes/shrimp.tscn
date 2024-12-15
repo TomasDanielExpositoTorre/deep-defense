@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bjkm472vtav8"]
+[gd_scene load_steps=26 format=4 uid="uid://bjkm472vtav8"]
 
 [ext_resource type="Texture2D" uid="uid://56nbj18idedb" path="res://assets/blender-exports/shrimp/shrimp_steel-axe.jpg" id="1_7h0vs"]
 [ext_resource type="Script" path="res://scripts/shrimp.gd" id="1_32vc0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Animation" uid="uid://yg5fa6pyclw5" path="res://assets/blender-exports/shrimp/attack.res" id="4_hmovm"]
 [ext_resource type="Animation" uid="uid://i88vtavt7j1s" path="res://assets/blender-exports/shrimp/damaged.res" id="5_v2c7i"]
 [ext_resource type="Animation" uid="uid://dccebqe14ppmq" path="res://assets/blender-exports/shrimp/walking.res" id="6_1imcs"]
+[ext_resource type="AudioStream" uid="uid://fo6tuxmbuis2" path="res://assets/music/axe-swing.mp3" id="8_5ghne"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2d5xm"]
 resource_name = "Feathers"
@@ -519,6 +520,9 @@ shape = SubResource("SphereShape3D_166t3")
 [node name="Area" type="CollisionShape3D" parent="DamageRange"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0196538, 0, -0.695335)
 shape = SubResource("BoxShape3D_4wdjg")
+
+[node name="Axe" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_5ghne")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="animation_finished"]
 [connection signal="body_entered" from="AttackRange" to="." method="melee_entered"]
