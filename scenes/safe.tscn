@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://ddatrustqgo6j"]
+[gd_scene load_steps=38 format=4 uid="uid://ddatrustqgo6j"]
 
 [ext_resource type="Script" path="res://scripts/safe.gd" id="1_phc6x"]
 [ext_resource type="Texture2D" uid="uid://b5cqgpiau1c5e" path="res://assets/blender-exports/safe/safe_steel-safe.jpg" id="1_xg756"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d080vlprxinuu" path="res://assets/blender-exports/safe/safe_formula-label.webp" id="4_qt5ic"]
 [ext_resource type="Texture2D" uid="uid://5up6x0hgm6oi" path="res://assets/blender-exports/safe/safe_gold-safe.jpg" id="5_h2g6f"]
 [ext_resource type="Animation" uid="uid://ck7t5fuaset4c" path="res://assets/blender-exports/safe/open.res" id="6_xdmat"]
+[ext_resource type="AudioStream" uid="uid://be6a3kaedse0i" path="res://assets/music/metal-impact.mp3" id="8_jwbmn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ame3k"]
 resource_name = "Steel"
@@ -474,3 +475,6 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0787811, 0.00912476, -6.10352e-05)
 shape = SubResource("BoxShape3D_2o3wq")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_jwbmn")

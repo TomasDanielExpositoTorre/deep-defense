@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqgfir0eyso8x"]
+[gd_scene load_steps=12 format=3 uid="uid://cqgfir0eyso8x"]
 
 [ext_resource type="PackedScene" uid="uid://c1wp3j1wo4ekt" path="res://scenes/shrimp-player.tscn" id="2_o1nfg"]
 [ext_resource type="PackedScene" uid="uid://c3xe3bt1lug5v" path="res://scenes/main.tscn" id="3_en4e1"]
 [ext_resource type="PackedScene" uid="uid://ddatrustqgo6j" path="res://scenes/safe.tscn" id="4_2im2f"]
 [ext_resource type="PackedScene" uid="uid://bjkm472vtav8" path="res://scenes/shrimp.tscn" id="4_iwc24"]
+[ext_resource type="AudioStream" uid="uid://cei4ich16t717" path="res://assets/music/main-theme.mp3" id="5_cvbhm"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w8bbp"]
 viewport_path = NodePath("Safe/Sprite3D2/SubViewport")
@@ -97,5 +98,7 @@ shape = SubResource("WorldBoundaryShape3D_eo0ht")
 transform = Transform3D(-1.31134e-07, -3, 0, -1.31134e-07, 5.73206e-15, -3, 3, -1.31134e-07, -1.31134e-07, 30.0291, 1.37739, -0.0508938)
 shape = SubResource("WorldBoundaryShape3D_eo0ht")
 
-[node name="Target" type="Marker3D" parent="."]
-unique_name_in_owner = true
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 85.0648, 0)
+stream = ExtResource("5_cvbhm")
+autoplay = true

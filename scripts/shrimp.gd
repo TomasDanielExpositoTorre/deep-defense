@@ -28,11 +28,15 @@ func _ready():
 	ex_atk_speed = 2
 
 func _physics_process(delta: float) -> void:
-	nav.target_position = target.global_position
+	if attacking:
+		return
 	
-	# Moverse al target cuando no ataca
-	if not attacking:
-		look_at(nav.target_position)
+	nav.target_position = target.global_position		
+	look_at(nav.target_position)
+		
+	if target in attack_range.get_overlapping_bodies():
+		attack(target)
+	else:
 		animation.play("Walking")
 		
 		var direction = (nav.get_next_path_position() - global_position).normalized()
@@ -48,17 +52,14 @@ func _physics_process(delta: float) -> void:
 # ------------------------------------------------------------------------------
 func melee_entered(body: Node3D) -> void:
 	if body.name in ["Player", "Safe"]:
-		attacking = true
 		attack(body)
 			
 func animation_finished(anim_name: StringName) -> void:
-	if target in attack_range.get_overlapping_bodies():
-		look_at(target.global_position)
-		attack(target)
-	elif anim_name == "Attack":
+	if anim_name == "Attack":
 		attacking = false
 
 func attack(body: Node3D):
+	attacking = true
 	animation.play("Attack")
 	animation.speed_scale = atk_speed if not enraged else ex_atk_speed
 	await get_tree().create_timer(1.66 / animation.speed_scale).timeout
