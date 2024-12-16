@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 # ----------------------------------- ATAQUE -----------------------------------
 # ------------------------------------------------------------------------------
 func melee_entered(body: Node3D) -> void:
-	if body.name in ["Player", "Safe"]:
+	if not attacking and body.name in ["Player", "Safe"]:
 		attack(body)
 			
 func animation_finished(anim_name: StringName) -> void:
