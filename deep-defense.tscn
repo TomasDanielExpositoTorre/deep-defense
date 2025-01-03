@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqgfir0eyso8x"]
+[gd_scene load_steps=14 format=3 uid="uid://cqgfir0eyso8x"]
 
+[ext_resource type="Script" path="res://scripts/deep_defense.gd" id="1_vosc1"]
 [ext_resource type="PackedScene" uid="uid://c1wp3j1wo4ekt" path="res://scenes/shrimp-player.tscn" id="2_o1nfg"]
-[ext_resource type="PackedScene" uid="uid://c3xe3bt1lug5v" path="res://scenes/main.tscn" id="3_en4e1"]
 [ext_resource type="PackedScene" uid="uid://ddatrustqgo6j" path="res://scenes/safe.tscn" id="4_2im2f"]
 [ext_resource type="PackedScene" uid="uid://bjkm472vtav8" path="res://scenes/shrimp.tscn" id="4_iwc24"]
 [ext_resource type="AudioStream" uid="uid://cei4ich16t717" path="res://assets/music/main-theme.mp3" id="5_cvbhm"]
+[ext_resource type="PackedScene" uid="uid://b1tiir3h460rj" path="res://scenes/rocks.tscn" id="6_uhdx0"]
+[ext_resource type="PackedScene" uid="uid://lyt7lec1itt5" path="res://assets/blender-exports/scenario/floor.glb" id="7_44wx7"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w8bbp"]
 viewport_path = NodePath("Safe/Sprite3D2/SubViewport")
@@ -15,17 +17,17 @@ bg_color = Color(0.176419, 0.176419, 0.176419, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8so1p"]
 bg_color = Color(0.396396, 0.153953, 0.124497, 1)
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_fdbcj"]
-vertices = PackedVector3Array(-21.8456, 0.253774, -25.6479, -21.5956, 0.253774, -25.1479, -19.5956, 0.253774, -25.6479, -19.3456, 0.253774, -29.8979, -23.8456, 0.253774, -25.1479, -29.5956, 0.253774, -29.8979, -29.5956, 0.253774, -21.3979, -22.8456, 0.253774, -25.6479, -25.3456, 0.253774, -21.3979, -2.59556, 0.253774, -25.6479, -2.09556, 0.253774, -26.1479, -3.59556, 0.253774, -25.8979, -17.5956, 0.253774, 6.10207, -16.8456, 0.253774, 6.10207, -16.5956, 0.253774, 5.35207, -24.0956, 0.253774, -17.8979, -24.0956, 0.253774, -19.1479, -24.8456, 0.253774, -19.6479, -17.5956, 0.253774, -18.6479, -20.3456, 0.253774, -18.1479, -20.5956, 0.253774, -16.8979, -2.59556, 0.253774, -21.8979, -18.0956, 0.253774, -25.6479, -4.09556, 0.253774, -26.8979, -16.8456, 0.253774, -23.8979, -16.5956, 0.253774, -20.8979, -4.09556, 0.253774, -28.3979, -3.34556, 0.253774, -29.8979, -29.5956, 0.253774, 9.85207, -27.3456, 0.253774, -5.39793, -29.0956, 0.253774, -5.39793, -22.8456, 0.253774, -16.8979, -29.0956, 0.253774, -9.64793, -27.5956, 0.253774, -9.64793, -19.3456, 0.253774, 9.85207, -19.0956, 0.253774, 7.85207, -29.5956, 0.253774, -8.64793, -14.5956, 0.253774, 5.60207, -14.0956, 0.253774, 6.35207, -0.595564, 0.253774, -20.1479, -27.0956, 0.253774, -9.14793, -29.5956, 0.253774, -7.39793, 22.6544, 0.253774, -29.3979, 24.1544, 0.253774, -29.6479, 24.1544, 0.253774, -29.8979, 22.1544, 0.253774, -18.8979, 24.1544, 0.253774, -18.8979, 24.1544, 0.253774, -25.8979, 22.6544, 0.253774, -26.6479, 6.15444, 0.253774, -26.3979, 3.90444, 0.253774, -29.3979, 21.1544, 0.253774, -18.1479, 6.15444, 0.253774, -25.1479, 2.15444, 0.253774, -29.8979, 3.90444, 0.253774, -22.8979, 25.4044, 0.253774, -29.6479, 29.6544, 0.253774, -29.8979, 25.4044, 0.253774, -18.6479, 26.1544, 0.253774, -26.6479, 26.1544, 0.253774, -28.6479, 26.4044, 0.253774, -17.3979, 29.6544, 0.253774, -16.3979, 2.65444, 0.253774, -25.6479, 3.15444, 0.253774, -24.3979, 3.65444, 0.253774, -25.3979, 3.65444, 0.253774, -26.1479, -19.8456, 0.253774, -21.8979, -19.3456, 0.253774, -21.1479, -18.8456, 0.253774, -21.1479, -18.5956, 0.253774, -22.6479, -21.3456, 0.253774, -23.1479, -21.3456, 0.253774, -21.8979, -19.5956, 0.253774, -24.1479, -20.8456, 0.253774, -23.8979, -13.8456, 0.253774, 7.10207, -12.8456, 0.253774, 7.35207, 3.40444, 0.253774, -22.3979, 2.15444, 0.253774, -22.3979, 0.154436, 0.253774, -20.1479, 19.6544, 0.253774, -12.8979, 21.4044, 0.253774, -15.1479, 18.4044, 0.253774, -7.89793, 20.1544, 0.253774, -10.6479, -11.3456, 0.253774, 8.85207, 3.15444, 0.253774, 22.6021, 19.6544, 0.253774, 6.85207, 18.4044, 0.253774, -6.39793, 20.1544, 0.253774, 2.85207, 19.6544, 0.253774, 1.35207, 19.6544, 0.253774, -3.14793, -11.5956, 0.253774, 11.3521, -1.84556, 0.253774, 22.8521, 21.6544, 0.253774, 10.3521, 24.1544, 0.253774, -14.1479, 23.1544, 0.253774, -15.6479, 23.4044, 0.253774, -13.3979, 27.6544, 0.253774, -11.1479, 28.6544, 0.253774, -11.1479, 29.6544, 0.253774, -12.1479, 29.6544, 0.253774, -14.1479, 27.1544, 0.253774, -15.3979, 26.1544, 0.253774, -14.1479, 22.6544, 0.253774, -12.8979, 23.1544, 0.253774, -9.89793, 26.9044, 0.253774, -9.89793, 26.1544, 0.253774, -1.64793, 26.4044, 0.253774, -0.397928, 27.1544, 0.253774, -0.397928, 28.9044, 0.253774, -3.14793, 22.9044, 0.253774, -2.39793, 24.9044, 0.253774, -1.14793, 25.1544, 0.253774, -1.64793, 23.9044, 0.253774, -3.39793, 28.4044, 0.253774, -5.39793, 28.9044, 0.253774, -9.14793, 27.1544, 0.253774, -9.14793, 23.9044, 0.253774, -4.89793, 20.1544, 0.253774, -7.64793, 21.1544, 0.253774, -4.39793, 21.6544, 0.253774, -5.14793, 22.9044, 0.253774, -8.64793, 21.1544, 0.253774, -8.39793, 21.9044, 0.253774, 6.10207, 22.1544, 0.253774, 7.10207, 23.4044, 0.253774, 6.60207, 23.1544, 0.253774, 5.10207, 27.1544, 0.253774, 2.35207, 25.1544, 0.253774, -0.147928, 22.9044, 0.253774, 2.35207, 23.1544, 0.253774, 3.60207, 26.4044, 0.253774, 5.60207, 21.9044, 0.253774, -2.14793, 21.4044, 0.253774, -0.147928, 27.9044, 0.253774, 1.60207, 25.4044, 0.253774, 6.85207, 21.4044, 0.253774, 0.852072, 26.1544, 0.253774, 9.35207, 27.4044, 0.253774, 9.60207, 28.6544, 0.253774, 9.60207, 29.6544, 0.253774, 7.85207, 28.1544, 0.253774, 6.35207, 25.9044, 0.253774, 7.35207, -12.5956, 0.253774, 10.1021, -13.5956, 0.253774, 8.60207, -14.8456, 0.253774, 8.35207, -17.5956, 0.253774, 10.3521, -16.8456, 0.253774, 12.3521, -15.5956, 0.253774, 12.6021, -17.0956, 0.253774, 9.35207, -19.3456, 0.253774, 11.3521, -18.5956, 0.253774, 12.8521, -17.0956, 0.253774, 14.3521, -29.5956, 0.253774, 29.6021, -16.0956, 0.253774, 29.6021, -16.0956, 0.253774, 14.3521, 25.4044, 0.253774, 26.3521, 26.1544, 0.253774, 27.1021, 26.4044, 0.253774, 24.3521, 22.4044, 0.253774, 26.6021, 22.9044, 0.253774, 12.3521, 29.6544, 0.253774, 22.6021, 29.6544, 0.253774, 11.3521, 4.90444, 0.253774, 25.1021, 4.90444, 0.253774, 27.8521, 20.9044, 0.253774, 27.8521, 4.40444, 0.253774, 23.6021, 3.90444, 0.253774, 29.6021, 21.6544, 0.253774, 29.6021, -0.845564, 0.253774, 29.6021, -2.84556, 0.253774, 27.3521, -2.59556, 0.253774, 23.3521, -14.3456, 0.253774, 13.8521, 2.90444, 0.253774, 26.1021, 2.90444, 0.253774, 24.8521, 2.15444, 0.253774, 24.1021, -0.0955639, 0.253774, 27.1021, 0.154436, 0.253774, 27.8521, 1.65444, 0.253774, 28.3521, 2.40444, 0.253774, 28.1021, 0.904436, 0.253774, 24.1021, 28.4044, 0.253774, 26.8521, 29.1544, 0.253774, 27.1021, 29.6544, 0.253774, 26.3521, 29.1544, 0.253774, 25.3521, 28.1544, 0.253774, 25.6021, 24.4044, 0.253774, 29.3521, 25.1544, 0.253774, 29.6021, 24.9044, 0.253774, 29.1021)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(4, 5, 3), PackedInt32Array(3, 0, 7), PackedInt32Array(4, 3, 7), PackedInt32Array(4, 8, 6), PackedInt32Array(11, 10, 9), PackedInt32Array(14, 13, 12), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 6), PackedInt32Array(20, 19, 18), PackedInt32Array(11, 9, 21), PackedInt32Array(22, 2, 3), PackedInt32Array(17, 6, 8), PackedInt32Array(11, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(24, 21, 25), PackedInt32Array(22, 3, 24), PackedInt32Array(24, 3, 26), PackedInt32Array(26, 3, 27), PackedInt32Array(12, 28, 14), PackedInt32Array(14, 28, 29), PackedInt32Array(29, 28, 30), PackedInt32Array(15, 31, 6), PackedInt32Array(6, 31, 33), PackedInt32Array(6, 33, 32), PackedInt32Array(28, 35, 34), PackedInt32Array(32, 36, 6), PackedInt32Array(24, 26, 23), PackedInt32Array(25, 21, 18), PackedInt32Array(18, 21, 39), PackedInt32Array(18, 39, 37), PackedInt32Array(37, 39, 38), PackedInt32Array(33, 31, 40), PackedInt32Array(40, 31, 20), PackedInt32Array(28, 41, 30), PackedInt32Array(12, 35, 28), PackedInt32Array(20, 18, 40), PackedInt32Array(40, 18, 29), PackedInt32Array(29, 18, 14), PackedInt32Array(14, 18, 37), PackedInt32Array(44, 43, 42), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(42, 49, 44), PackedInt32Array(44, 49, 50), PackedInt32Array(45, 51, 48), PackedInt32Array(48, 51, 42), PackedInt32Array(42, 51, 52), PackedInt32Array(42, 52, 49), PackedInt32Array(44, 50, 53), PackedInt32Array(52, 51, 54), PackedInt32Array(43, 44, 55), PackedInt32Array(55, 44, 56), PackedInt32Array(46, 47, 57), PackedInt32Array(57, 47, 58), PackedInt32Array(59, 55, 56), PackedInt32Array(58, 59, 56), PackedInt32Array(60, 57, 61), PackedInt32Array(61, 57, 58), PackedInt32Array(61, 58, 56), PackedInt32Array(65, 64, 62), PackedInt32Array(62, 64, 63), PackedInt32Array(67, 66, 68), PackedInt32Array(68, 66, 69), PackedInt32Array(73, 72, 70), PackedInt32Array(70, 72, 71), PackedInt32Array(71, 72, 66), PackedInt32Array(66, 72, 69), PackedInt32Array(74, 38, 75), PackedInt32Array(75, 38, 39), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 51), PackedInt32Array(78, 51, 80), PackedInt32Array(78, 80, 79), PackedInt32Array(82, 81, 79), PackedInt32Array(79, 81, 78), PackedInt32Array(78, 81, 39), PackedInt32Array(83, 75, 84), PackedInt32Array(84, 75, 85), PackedInt32Array(85, 75, 86), PackedInt32Array(86, 75, 39), PackedInt32Array(88, 87, 85), PackedInt32Array(86, 89, 88), PackedInt32Array(85, 86, 88), PackedInt32Array(90, 83, 91), PackedInt32Array(91, 83, 84), PackedInt32Array(76, 54, 51), PackedInt32Array(39, 81, 86), PackedInt32Array(85, 92, 84), PackedInt32Array(95, 94, 93), PackedInt32Array(97, 96, 98), PackedInt32Array(98, 96, 99), PackedInt32Array(99, 96, 101), PackedInt32Array(99, 101, 100), PackedInt32Array(95, 93, 101), PackedInt32Array(102, 95, 103), PackedInt32Array(103, 95, 101), PackedInt32Array(103, 101, 96), PackedInt32Array(103, 96, 104), PackedInt32Array(106, 105, 107), PackedInt32Array(107, 105, 108), PackedInt32Array(111, 110, 112), PackedInt32Array(112, 110, 109), PackedInt32Array(115, 114, 113), PackedInt32Array(111, 112, 105), PackedInt32Array(105, 112, 116), PackedInt32Array(119, 118, 117), PackedInt32Array(121, 120, 117), PackedInt32Array(117, 120, 119), PackedInt32Array(119, 120, 116), PackedInt32Array(108, 105, 113), PackedInt32Array(113, 105, 116), PackedInt32Array(113, 116, 115), PackedInt32Array(115, 116, 120), PackedInt32Array(104, 115, 103), PackedInt32Array(103, 115, 120), PackedInt32Array(123, 122, 124), PackedInt32Array(124, 122, 125), PackedInt32Array(107, 126, 127), PackedInt32Array(127, 126, 128), PackedInt32Array(128, 126, 129), PackedInt32Array(129, 126, 130), PackedInt32Array(127, 106, 107), PackedInt32Array(109, 132, 131), PackedInt32Array(107, 133, 126), PackedInt32Array(125, 129, 124), PackedInt32Array(124, 129, 134), PackedInt32Array(134, 129, 130), PackedInt32Array(135, 132, 128), PackedInt32Array(128, 132, 127), PackedInt32Array(127, 132, 110), PackedInt32Array(110, 132, 109), PackedInt32Array(137, 136, 138), PackedInt32Array(138, 136, 141), PackedInt32Array(138, 141, 140), PackedInt32Array(138, 140, 139), PackedInt32Array(144, 143, 142), PackedInt32Array(145, 148, 146), PackedInt32Array(146, 148, 147), PackedInt32Array(147, 148, 144), PackedInt32Array(147, 144, 142), PackedInt32Array(28, 34, 149), PackedInt32Array(28, 149, 150), PackedInt32Array(150, 151, 28), PackedInt32Array(28, 151, 153), PackedInt32Array(28, 153, 152), PackedInt32Array(151, 154, 153), PackedInt32Array(157, 156, 155), PackedInt32Array(155, 158, 157), PackedInt32Array(157, 158, 159), PackedInt32Array(160, 157, 161), PackedInt32Array(161, 157, 159), PackedInt32Array(164, 163, 162), PackedInt32Array(164, 162, 165), PackedInt32Array(158, 164, 159), PackedInt32Array(159, 164, 92), PackedInt32Array(92, 164, 165), PackedInt32Array(92, 165, 84), PackedInt32Array(164, 167, 163), PackedInt32Array(163, 167, 166), PackedInt32Array(169, 168, 153), PackedInt32Array(169, 153, 170), PackedInt32Array(170, 153, 171), PackedInt32Array(171, 153, 154), PackedInt32Array(91, 170, 90), PackedInt32Array(90, 170, 171), PackedInt32Array(174, 173, 172), PackedInt32Array(175, 177, 176), PackedInt32Array(178, 177, 172), PackedInt32Array(172, 177, 175), PackedInt32Array(172, 175, 174), PackedInt32Array(174, 175, 179), PackedInt32Array(181, 180, 182), PackedInt32Array(182, 180, 183), PackedInt32Array(183, 180, 184), PackedInt32Array(187, 186, 185)]
-agent_max_climb = 0.03
-agent_max_slope = 1.0
+[sub_resource type="NavigationMesh" id="NavigationMesh_ohwje"]
+vertices = PackedVector3Array(-25.8215, 0.341813, -19.8215, -24.5715, 0.341813, -20.8215, -24.3215, 0.341813, -22.0715, -29.5715, 0.341813, -19.0715, -25.8215, 0.341813, -19.0715, -23.8215, 0.341813, -22.5715, -22.5715, 0.341813, -22.5715, -22.5715, 0.341813, -29.5715, -29.5715, 0.341813, -29.5715, -6.82154, 0.341813, 26.9285, -7.57154, 0.341813, 26.9285, -7.57154, 0.341813, 29.6785, -6.07154, 0.341813, 26.1785, 19.9285, 0.341813, 29.6785, 18.1785, 0.341813, 27.6785, -25.5715, 0.341813, -18.0715, -18.0715, 0.341813, 8.92846, -16.5715, 0.591813, 12.4285, -15.8215, 0.341813, 12.9285, -29.5715, 0.341813, 2.92846, -26.3215, 0.341813, 2.92846, -25.0715, 0.341813, 1.92846, -23.5715, 0.341813, -16.5715, 23.4285, 0.341813, 19.9285, 25.4285, 0.341813, 21.1785, 28.4285, 0.341813, 20.9285, 24.4285, 0.341813, -5.57154, 22.1785, 0.341813, -5.57154, -20.0715, 0.341813, 2.92846, -19.3215, 0.341813, 7.42846, 21.4285, 0.341813, 20.4285, 20.9285, 0.341813, -6.57154, 17.6785, 0.341813, -11.3215, -18.5715, 0.341813, -19.0715, -5.82154, 0.341813, 22.4285, 22.1785, 0.341813, -19.0715, 23.9285, 0.341813, -19.0715, 23.9285, 0.341813, -26.0715, 22.6785, 0.341813, -26.8215, 20.9285, 0.341813, -18.0715, -19.8215, 0.341813, -22.0715, -19.8215, 0.341813, -16.5715, -20.8215, 0.341813, 2.42846, -19.0715, 0.341813, -17.3215, -18.8215, 0.341813, -21.3215, 22.6785, 0.341813, -28.8215, 23.4285, 0.341813, -29.5715, -7.07154, 0.341813, 21.4285, 17.6785, 0.341813, -13.3215, -15.5715, 0.341813, 14.4285, -8.82154, 0.341813, 21.4285, 18.1785, 0.341813, 25.9285, 29.6785, 0.341813, 21.4285, 29.6785, 0.341813, -7.57154, 29.6785, 0.341813, -29.5715, 25.4285, 0.341813, -29.5715, 26.1785, 0.341813, -28.8215, 26.1785, 0.341813, -26.8215, 25.1785, 0.341813, -26.0715, 29.6785, 0.341813, -17.0715, 24.1785, 1.84181, -28.0715, 24.1785, 1.84181, -27.5715, 24.6785, 1.84181, -27.5715, 24.6785, 1.84181, -28.0715, -21.0715, 2.09181, -20.0715, -21.0715, 2.09181, -19.5715, -20.3215, 2.09181, -19.5715, -20.5715, 2.09181, -20.3215, -22.8215, 1.84181, -18.3215, -21.3215, 1.84181, -18.3215, -21.5715, 2.09181, -19.0715, -23.3215, 1.84181, -19.0715, 23.6785, 0.341813, -17.5715, 22.4285, 0.341813, -17.3215, 21.9285, 0.341813, -16.0715, 19.1785, 0.341813, -12.8215, 19.1785, 0.341813, -11.8215, 22.9285, 0.341813, -7.07154, 28.1785, 0.341813, -8.57154, 28.9285, 0.341813, -9.57154, 28.6785, 0.341813, -15.8215, 22.9285, 9.09181, -12.0715, 23.9285, 9.09181, -11.0715, 23.9285, 9.09181, -12.0715, 23.4285, 9.09181, -12.3215, 22.9285, 9.09181, -13.3215, 23.6785, 9.09181, -13.5715, 26.4285, 9.09181, -12.0715, 25.9285, 9.09181, -13.0715, 25.9285, 9.09181, -12.3215, 25.4285, 9.09181, -12.0715, 25.4285, 9.09181, -11.0715, -26.8215, 0.341813, 3.42846, -29.5715, 0.341813, 11.9285, -26.3215, 0.341813, 11.6785, -20.5715, 0.591813, 14.4285, -20.0715, 0.341813, 15.6785, -19.0715, 0.341813, 15.6785, -17.5715, 0.591813, 13.9285, -24.5715, 0.341813, 8.92846, -24.8215, 0.341813, 12.9285, -21.8215, 0.341813, 14.4285, -20.0715, 0.591813, 8.42846, -20.8215, 0.341813, 8.17846, -21.8215, 0.341813, 3.92846, -24.0715, 0.341813, 3.42846, -25.3215, 0.341813, 4.17846, -24.5715, 0.341813, 8.17846, -25.0715, 0.341813, 9.17846, -26.0715, 0.341813, 13.9285, -25.5715, 0.341813, 14.4285, -21.0715, 0.341813, 17.4285, -21.5715, 0.341813, 15.9285, -29.5715, 0.341813, 29.6785, -20.0715, 0.341813, 29.6785, -20.0715, 0.341813, 17.6785, -10.0715, 0.341813, 26.4285, -10.8215, 0.341813, 25.6785, -10.8215, 0.341813, 23.6785, -18.5715, 0.341813, 17.1785, 23.1785, 2.09181, 23.9285, 23.9285, 2.09181, 23.6785, 23.6785, 2.09181, 22.4285, 22.4285, 2.09181, 22.6785, 20.4285, 0.591813, 26.1785, 19.9285, 0.341813, 26.4285, 19.9285, 0.341813, 27.1785, 22.1785, 0.341813, 28.9285, 22.9285, 0.341813, 25.1785, 22.6785, 0.341813, 23.9285, 23.9285, 0.341813, 23.4285, 23.1785, 0.341813, 22.4285, 22.4285, 0.341813, 22.6785, 23.9285, 0.341813, 29.4285, 27.1785, 0.341813, 29.1785, 28.4285, 0.341813, 25.9285, 24.9285, 0.341813, 24.9285, 22.1785, 0.341813, 24.1785, 20.9285, 0.341813, 24.1785, 20.4285, 0.341813, 24.6785, 29.1785, 0.341813, 25.1785, 28.9285, 0.341813, 23.1785, 26.6785, 0.341813, 22.4285, 25.4285, 0.591813, 23.1785, 28.6785, 0.341813, 28.1785, -9.32154, 0.341813, 24.4285, -9.32154, 0.341813, 24.9285, -8.82154, 0.341813, 24.9285, -7.32154, 0.341813, 23.9285, -8.57154, 0.341813, 23.9285, -7.32154, 0.341813, 23.1785, -8.32154, 0.341813, 22.9285, 27.9285, 3.84181, 25.4285, 28.4285, 3.84181, 24.6785, 28.4285, 3.84181, 23.9285, 27.6785, 3.84181, 23.1785, 26.1785, 3.84181, 23.6785, 26.6785, 3.84181, 25.4285, 22.4285, 3.34181, 26.1785, 21.9285, 3.34181, 27.4285, 22.1785, 3.34181, 27.9285, 26.9285, 3.34181, 27.6785, 26.9285, 3.34181, 27.1785, 25.4285, 3.59181, 25.9285, 24.9285, 3.34181, 28.6785)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(0, 4, 3), PackedInt32Array(7, 6, 5), PackedInt32Array(2, 3, 5), PackedInt32Array(5, 3, 8), PackedInt32Array(5, 8, 7), PackedInt32Array(11, 10, 9), PackedInt32Array(9, 12, 11), PackedInt32Array(11, 12, 14), PackedInt32Array(11, 14, 13), PackedInt32Array(3, 4, 15), PackedInt32Array(18, 17, 16), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(22, 19, 15), PackedInt32Array(15, 19, 3), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 26), PackedInt32Array(26, 23, 27), PackedInt32Array(16, 29, 28), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 34), PackedInt32Array(32, 34, 28), PackedInt32Array(32, 28, 33), PackedInt32Array(37, 36, 35), PackedInt32Array(37, 35, 38), PackedInt32Array(38, 35, 39), PackedInt32Array(40, 6, 7), PackedInt32Array(42, 41, 28), PackedInt32Array(28, 41, 43), PackedInt32Array(40, 7, 44), PackedInt32Array(44, 7, 45), PackedInt32Array(45, 7, 46), PackedInt32Array(16, 28, 18), PackedInt32Array(18, 28, 47), PackedInt32Array(47, 28, 34), PackedInt32Array(38, 39, 45), PackedInt32Array(45, 39, 48), PackedInt32Array(45, 48, 33), PackedInt32Array(45, 33, 44), PackedInt32Array(49, 18, 50), PackedInt32Array(50, 18, 47), PackedInt32Array(48, 32, 33), PackedInt32Array(51, 14, 12), PackedInt32Array(12, 34, 51), PackedInt32Array(51, 34, 30), PackedInt32Array(25, 26, 52), PackedInt32Array(52, 26, 53), PackedInt32Array(23, 30, 27), PackedInt32Array(27, 30, 31), PackedInt32Array(22, 41, 21), PackedInt32Array(21, 41, 42), PackedInt32Array(28, 43, 33), PackedInt32Array(56, 55, 54), PackedInt32Array(57, 56, 54), PackedInt32Array(36, 37, 58), PackedInt32Array(36, 58, 57), PackedInt32Array(57, 54, 36), PackedInt32Array(36, 54, 59), PackedInt32Array(63, 62, 60), PackedInt32Array(60, 62, 61), PackedInt32Array(64, 67, 65), PackedInt32Array(65, 67, 66), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 71), PackedInt32Array(72, 74, 73), PackedInt32Array(76, 75, 74), PackedInt32Array(79, 78, 77), PackedInt32Array(72, 80, 74), PackedInt32Array(74, 80, 76), PackedInt32Array(76, 80, 79), PackedInt32Array(76, 79, 77), PackedInt32Array(84, 83, 81), PackedInt32Array(81, 83, 82), PackedInt32Array(81, 85, 84), PackedInt32Array(84, 85, 86), PackedInt32Array(89, 88, 87), PackedInt32Array(89, 87, 90), PackedInt32Array(90, 87, 91), PackedInt32Array(19, 20, 92), PackedInt32Array(92, 94, 19), PackedInt32Array(19, 94, 93), PackedInt32Array(96, 95, 97), PackedInt32Array(97, 95, 98), PackedInt32Array(103, 102, 99), PackedInt32Array(99, 102, 100), PackedInt32Array(100, 102, 101), PackedInt32Array(101, 102, 98), PackedInt32Array(105, 104, 106), PackedInt32Array(106, 104, 107), PackedInt32Array(107, 104, 103), PackedInt32Array(100, 108, 99), PackedInt32Array(98, 95, 101), PackedInt32Array(99, 107, 103), PackedInt32Array(93, 94, 109), PackedInt32Array(93, 109, 110), PackedInt32Array(110, 112, 111), PackedInt32Array(110, 111, 93), PackedInt32Array(93, 111, 114), PackedInt32Array(93, 114, 113), PackedInt32Array(111, 115, 114), PackedInt32Array(116, 10, 11), PackedInt32Array(116, 11, 117), PackedInt32Array(117, 11, 114), PackedInt32Array(119, 118, 115), PackedInt32Array(115, 118, 117), PackedInt32Array(115, 117, 114), PackedInt32Array(50, 118, 49), PackedInt32Array(49, 118, 119), PackedInt32Array(121, 120, 122), PackedInt32Array(122, 120, 123), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 127), PackedInt32Array(127, 124, 128), PackedInt32Array(132, 131, 129), PackedInt32Array(129, 131, 130), PackedInt32Array(127, 128, 133), PackedInt32Array(133, 128, 136), PackedInt32Array(133, 136, 134), PackedInt32Array(134, 136, 135), PackedInt32Array(132, 129, 137), PackedInt32Array(137, 129, 128), PackedInt32Array(138, 137, 139), PackedInt32Array(139, 137, 128), PackedInt32Array(139, 128, 124), PackedInt32Array(140, 135, 141), PackedInt32Array(141, 135, 142), PackedInt32Array(142, 135, 143), PackedInt32Array(143, 135, 136), PackedInt32Array(144, 134, 135), PackedInt32Array(146, 145, 147), PackedInt32Array(147, 145, 149), PackedInt32Array(147, 149, 148), PackedInt32Array(150, 148, 151), PackedInt32Array(151, 148, 149), PackedInt32Array(153, 152, 154), PackedInt32Array(154, 152, 155), PackedInt32Array(155, 152, 157), PackedInt32Array(155, 157, 156), PackedInt32Array(158, 160, 159), PackedInt32Array(162, 161, 163), PackedInt32Array(163, 161, 164), PackedInt32Array(163, 164, 158), PackedInt32Array(158, 164, 160)]
+agent_max_slope = 15.0
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_o4ye4"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_eo0ht"]
 
 [node name="Deep Defense" type="Node3D"]
+script = ExtResource("1_vosc1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.280147, 0.5838, 0.762034, -2.15274e-08, -0.793821, 0.608152, 0.959957, -0.170372, -0.222387, 30.5558, 13.0936, -31.1338)
@@ -36,10 +38,25 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30314, 0.357011, 2.92226)
 
 [node name="head" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.964151, 0.031704)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.964151, 0.999096)
+visible = false
 
 [node name="Camera3D" type="Camera3D" parent="Player/head"]
 transform = Transform3D(1, 0, 0, 0, 0.928246, 0.371967, 0, -0.371967, 0.928246, 0, 0.172532, -0.0303719)
+
+[node name="xr_origin" type="XROrigin3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117425, 1.26896)
+
+[node name="XRCamera3D" type="XRCamera3D" parent="Player/xr_origin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.98023e-08, 0)
+
+[node name="Left" type="XRController3D" parent="Player/xr_origin"]
+unique_name_in_owner = true
+tracker = &"left_hand"
+
+[node name="Right" type="XRController3D" parent="Player/xr_origin"]
+unique_name_in_owner = true
+tracker = &"right_hand"
 
 [node name="Safe" parent="." instance=ExtResource("4_2im2f")]
 unique_name_in_owner = true
@@ -63,42 +80,43 @@ theme_override_styles/background = SubResource("StyleBoxFlat_47rn0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8so1p")
 show_percentage = false
 
-[node name="Level" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_fdbcj")
-
-[node name="scenario" parent="Level" instance=ExtResource("3_en4e1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.694, 0)
-
-[node name="Floor" type="StaticBody3D" parent="Level/scenario"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00016427, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/scenario/Floor"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.7, 0)
-shape = SubResource("WorldBoundaryShape3D_o4ye4")
-
-[node name="Walls" type="StaticBody3D" parent="Level/scenario"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00016427, 0)
-
-[node name="B" type="CollisionShape3D" parent="Level/scenario/Walls"]
-transform = Transform3D(-3, -2.62268e-07, 1.14641e-14, 0, -1.31134e-07, -3, 2.62268e-07, -3, 1.31134e-07, 0, 1.36308, 29.9283)
-shape = SubResource("WorldBoundaryShape3D_eo0ht")
-
-[node name="A" type="CollisionShape3D" parent="Level/scenario/Walls"]
-transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0.683223, -30.1949)
-shape = SubResource("WorldBoundaryShape3D_eo0ht")
-
-[node name="C" type="CollisionShape3D" parent="Level/scenario/Walls"]
-transform = Transform3D(-1.31134e-07, 3, -1.31134e-07, 0, -1.31134e-07, -3, -3, -1.31134e-07, 5.73206e-15, -30.054, 1.37739, -0.0508938)
-shape = SubResource("WorldBoundaryShape3D_eo0ht")
-
-[node name="D" type="CollisionShape3D" parent="Level/scenario/Walls"]
-transform = Transform3D(-1.31134e-07, -3, 0, -1.31134e-07, 5.73206e-15, -3, 3, -1.31134e-07, -1.31134e-07, 30.0291, 1.37739, -0.0508938)
-shape = SubResource("WorldBoundaryShape3D_eo0ht")
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 85.0648, 0)
 stream = ExtResource("5_cvbhm")
 autoplay = true
 
 [node name="shrimp" parent="." instance=ExtResource("4_iwc24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.915, 0.06, -14.902)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.748, 0, -14.902)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ohwje")
+
+[node name="rocks" parent="NavigationRegion3D" instance=ExtResource("6_uhdx0")]
+
+[node name="floor" parent="NavigationRegion3D" instance=ExtResource("7_44wx7")]
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.694164, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/floor/Floor"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.7, 0)
+shape = SubResource("WorldBoundaryShape3D_o4ye4")
+
+[node name="Walls" type="StaticBody3D" parent="NavigationRegion3D/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.694164, 0)
+
+[node name="B" type="CollisionShape3D" parent="NavigationRegion3D/floor/Walls"]
+transform = Transform3D(-3, -2.62268e-07, 1.14641e-14, 0, -1.31134e-07, -3, 2.62268e-07, -3, 1.31134e-07, 0, 1.36308, 29.9283)
+shape = SubResource("WorldBoundaryShape3D_eo0ht")
+
+[node name="A" type="CollisionShape3D" parent="NavigationRegion3D/floor/Walls"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0.683223, -30.1949)
+shape = SubResource("WorldBoundaryShape3D_eo0ht")
+
+[node name="C" type="CollisionShape3D" parent="NavigationRegion3D/floor/Walls"]
+transform = Transform3D(-1.31134e-07, 3, -1.31134e-07, 0, -1.31134e-07, -3, -3, -1.31134e-07, 5.73206e-15, -30.054, 1.37739, -0.0508938)
+shape = SubResource("WorldBoundaryShape3D_eo0ht")
+
+[node name="D" type="CollisionShape3D" parent="NavigationRegion3D/floor/Walls"]
+transform = Transform3D(-1.31134e-07, -3, 0, -1.31134e-07, 5.73206e-15, -3, 3, -1.31134e-07, -1.31134e-07, 30.0291, 1.37739, -0.0508938)
+shape = SubResource("WorldBoundaryShape3D_eo0ht")

@@ -26,9 +26,9 @@ func _ready():
 	# Parámetros para el estado enfurecido
 	ex_speed = 2
 	ex_damage = 7
-	ex_atk_speed = 2
+	ex_atk_speed = 3
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if attacking:
 		return
 	
@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 func melee_entered(body: Node3D) -> void:
 	if not attacking and body.name in ["Player", "Safe"]:
 		attack(body)
-			
+
 func animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Attack":
 		attacking = false
