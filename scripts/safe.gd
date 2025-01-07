@@ -19,7 +19,6 @@ func _ready() -> void:
 func take_damage(n: int):
 	if health > 0:
 		health = clamp(health-n,0, 100)
-		health -= n
 		health_bar.value = health
 		damaged.play()
 		if health <= 0 and not open:

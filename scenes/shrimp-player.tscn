@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=4 uid="uid://c1wp3j1wo4ekt"]
 
 [ext_resource type="Texture2D" uid="uid://56nbj18idedb" path="res://assets/blender-exports/shrimp/shrimp_steel-axe.jpg" id="1_7h0vs"]
-[ext_resource type="Script" path="res://scripts/shrimp-testplayer.gd" id="1_32vc0"]
+[ext_resource type="Script" path="res://scripts/patricio.gd" id="1_32vc0"]
 [ext_resource type="Texture2D" uid="uid://btwnlko5whs8p" path="res://assets/blender-exports/shrimp/shrimp_shrimp-image.webp" id="2_onss1"]
 [ext_resource type="Texture2D" uid="uid://vfvxpto8olm7" path="res://assets/blender-exports/shrimp/shrimp_wood.jpg" id="3_pihx7"]
 [ext_resource type="Animation" uid="uid://yg5fa6pyclw5" path="res://assets/blender-exports/shrimp/attack.res" id="4_hmovm"]
