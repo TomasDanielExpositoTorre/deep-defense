@@ -1,3 +1,9 @@
+"""
+Protagonista del juego, el defensor de la fórmula secreta.
+Puede golpear a enemigos con los puños, moverse en 3D y XR.
+
+@author: Tomás Daniel Expósito Torre.
+"""
 extends CharacterBody3D
 
 # 3D variables
@@ -24,7 +30,6 @@ var attacking = false
 @onready var xr_origin = $xr_origin
 @onready var left_controller = %Left
 @onready var right_controller = %Right
-@onready var body: MeshInstance3D = $Armature/Skeleton3D/Body
 
 var use_xr = false
 
@@ -35,7 +40,6 @@ func _ready():
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * SENSITIVITY)
-		#camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
 func _physics_process(delta: float) -> void:
@@ -128,8 +132,10 @@ func _on_animation_finished(anim: StringName) -> void:
 		attacking = false
 
 func take_damage(n: int):
-	health -= n
-	animation.play("Damaged")
-	sounds.get_node("Damaged").play()
+	health = clamp(health-n,0,15)
 	if health <= 0:
+		sounds.get_node("Death").play()
 		queue_free()
+	else:
+		sounds.get_node("Damaged").play(0.09)
+	
