@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://vs8hjfaync1"]
+[gd_scene load_steps=23 format=4 uid="uid://vs8hjfaync1"]
 
 [ext_resource type="Texture2D" uid="uid://cx48xl1re7ago" path="res://assets/blender-exports/patricio/patricio_patrick.png" id="1_n2kx2"]
 [ext_resource type="Script" path="res://scripts/patricio.gd" id="1_p555i"]
@@ -6,6 +6,8 @@
 [ext_resource type="Animation" uid="uid://5s554sosps1j" path="res://assets/blender-exports/patricio/attacking.res" id="4_oyjl0"]
 [ext_resource type="Animation" uid="uid://cd4jrcp2swii0" path="res://assets/blender-exports/patricio/idle.res" id="5_ixemw"]
 [ext_resource type="Animation" uid="uid://0whkn8bhhyi5" path="res://assets/blender-exports/patricio/walking.res" id="5_mgh1y"]
+[ext_resource type="AudioStream" uid="uid://cd4eidwafl3yf" path="res://assets/music/patrick-damaged.mp3" id="7_kv0mr"]
+[ext_resource type="AudioStream" uid="uid://dfd3n12d8yhqr" path="res://assets/music/patrick-bam.mp3" id="8_ml26c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8upvv"]
 resource_name = "Piel"
@@ -393,5 +395,14 @@ shape = SubResource("CapsuleShape3D_3oxqb")
 [node name="Area" type="CollisionShape3D" parent="Damage Range"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0209961, -0.158936, -1.13223)
 shape = SubResource("BoxShape3D_khba2")
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="Damaged" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("7_kv0mr")
+
+[node name="Attack" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("8_ml26c")
+volume_db = -15.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

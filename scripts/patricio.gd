@@ -5,9 +5,10 @@ extends CharacterBody3D
 @onready var armature: Node3D = $Armature
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var damage_range: Area3D = $"Damage Range"
+@onready var sounds: Node3D = $Sounds
 
-const WALK_SPEED = 5
-const SPRINT_SPEED = 5 * 1.25
+const WALK_SPEED = 5.0
+const SPRINT_SPEED = 5.0 * 1.25
 const JUMP_VELOCITY = 5
 const ATK_DAMAGE = 5
 var health = 15
@@ -120,6 +121,7 @@ func physics_xr(delta):
 
 func _on_animation_finished(anim: StringName) -> void:
 	if anim == "Attacking":
+		sounds.get_node("Attack").play(0.09)
 		for body in damage_range.get_overlapping_bodies():
 			if body.has_method("take_damage") and body.name != "Safe":
 				body.take_damage(ATK_DAMAGE)
@@ -128,5 +130,6 @@ func _on_animation_finished(anim: StringName) -> void:
 func take_damage(n: int):
 	health -= n
 	animation.play("Damaged")
+	sounds.get_node("Damaged").play()
 	if health <= 0:
 		queue_free()
