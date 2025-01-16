@@ -1,21 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqgfir0eyso8x"]
+[gd_scene load_steps=20 format=3 uid="uid://cqgfir0eyso8x"]
 
 [ext_resource type="Script" path="res://scripts/deep_defense.gd" id="1_vosc1"]
+[ext_resource type="Texture2D" uid="uid://b2qyoa2qbcp4l" path="res://assets/img/background.jpg" id="2_6a5ts"]
 [ext_resource type="PackedScene" uid="uid://ddatrustqgo6j" path="res://scenes/safe.tscn" id="4_2im2f"]
-[ext_resource type="PackedScene" uid="uid://bjkm472vtav8" path="res://scenes/shrimp.tscn" id="4_iwc24"]
 [ext_resource type="AudioStream" uid="uid://cei4ich16t717" path="res://assets/music/main-theme.mp3" id="5_cvbhm"]
 [ext_resource type="PackedScene" uid="uid://b1tiir3h460rj" path="res://scenes/rocks.tscn" id="6_uhdx0"]
 [ext_resource type="PackedScene" uid="uid://lyt7lec1itt5" path="res://assets/blender-exports/scenario/floor.glb" id="7_44wx7"]
 [ext_resource type="PackedScene" uid="uid://vs8hjfaync1" path="res://scenes/patricio.tscn" id="7_ldjbh"]
+[ext_resource type="PackedScene" uid="uid://b3jnd1gh3dn1u" path="res://scenes/enemy_spawner.tscn" id="9_a1073"]
+[ext_resource type="PackedScene" uid="uid://xkhv7dnms3ww" path="res://scenes/HUD.tscn" id="9_wc1yn"]
+[ext_resource type="PackedScene" uid="uid://d1lr7lbvenr7e" path="res://scenes/shrimptotem.tscn" id="10_5y7xf"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w8bbp"]
-viewport_path = NodePath("Safe/Sprite3D2/SubViewport")
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbnqm"]
+panorama = ExtResource("2_6a5ts")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47rn0"]
-bg_color = Color(0.176419, 0.176419, 0.176419, 1)
+[sub_resource type="Sky" id="Sky_533vk"]
+sky_material = SubResource("PanoramaSkyMaterial_dbnqm")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8so1p"]
-bg_color = Color(0.396396, 0.153953, 0.124497, 1)
+[sub_resource type="Environment" id="Environment_vswl3"]
+background_mode = 2
+sky = SubResource("Sky_533vk")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ohwje"]
 vertices = PackedVector3Array(-25.8215, 0.341813, -19.8215, -24.5715, 0.341813, -20.8215, -24.3215, 0.341813, -22.0715, -29.5715, 0.341813, -19.0715, -25.8215, 0.341813, -19.0715, -23.8215, 0.341813, -22.5715, -22.5715, 0.341813, -22.5715, -22.5715, 0.341813, -29.5715, -29.5715, 0.341813, -29.5715, -6.82154, 0.341813, 26.9285, -7.57154, 0.341813, 26.9285, -7.57154, 0.341813, 29.6785, -6.07154, 0.341813, 26.1785, 19.9285, 0.341813, 29.6785, 18.1785, 0.341813, 27.6785, -25.5715, 0.341813, -18.0715, -18.0715, 0.341813, 8.92846, -16.5715, 0.591813, 12.4285, -15.8215, 0.341813, 12.9285, -29.5715, 0.341813, 2.92846, -26.3215, 0.341813, 2.92846, -25.0715, 0.341813, 1.92846, -23.5715, 0.341813, -16.5715, 23.4285, 0.341813, 19.9285, 25.4285, 0.341813, 21.1785, 28.4285, 0.341813, 20.9285, 24.4285, 0.341813, -5.57154, 22.1785, 0.341813, -5.57154, -20.0715, 0.341813, 2.92846, -19.3215, 0.341813, 7.42846, 21.4285, 0.341813, 20.4285, 20.9285, 0.341813, -6.57154, 17.6785, 0.341813, -11.3215, -18.5715, 0.341813, -19.0715, -5.82154, 0.341813, 22.4285, 22.1785, 0.341813, -19.0715, 23.9285, 0.341813, -19.0715, 23.9285, 0.341813, -26.0715, 22.6785, 0.341813, -26.8215, 20.9285, 0.341813, -18.0715, -19.8215, 0.341813, -22.0715, -19.8215, 0.341813, -16.5715, -20.8215, 0.341813, 2.42846, -19.0715, 0.341813, -17.3215, -18.8215, 0.341813, -21.3215, 22.6785, 0.341813, -28.8215, 23.4285, 0.341813, -29.5715, -7.07154, 0.341813, 21.4285, 17.6785, 0.341813, -13.3215, -15.5715, 0.341813, 14.4285, -8.82154, 0.341813, 21.4285, 18.1785, 0.341813, 25.9285, 29.6785, 0.341813, 21.4285, 29.6785, 0.341813, -7.57154, 29.6785, 0.341813, -29.5715, 25.4285, 0.341813, -29.5715, 26.1785, 0.341813, -28.8215, 26.1785, 0.341813, -26.8215, 25.1785, 0.341813, -26.0715, 29.6785, 0.341813, -17.0715, 24.1785, 1.84181, -28.0715, 24.1785, 1.84181, -27.5715, 24.6785, 1.84181, -27.5715, 24.6785, 1.84181, -28.0715, -21.0715, 2.09181, -20.0715, -21.0715, 2.09181, -19.5715, -20.3215, 2.09181, -19.5715, -20.5715, 2.09181, -20.3215, -22.8215, 1.84181, -18.3215, -21.3215, 1.84181, -18.3215, -21.5715, 2.09181, -19.0715, -23.3215, 1.84181, -19.0715, 23.6785, 0.341813, -17.5715, 22.4285, 0.341813, -17.3215, 21.9285, 0.341813, -16.0715, 19.1785, 0.341813, -12.8215, 19.1785, 0.341813, -11.8215, 22.9285, 0.341813, -7.07154, 28.1785, 0.341813, -8.57154, 28.9285, 0.341813, -9.57154, 28.6785, 0.341813, -15.8215, 22.9285, 9.09181, -12.0715, 23.9285, 9.09181, -11.0715, 23.9285, 9.09181, -12.0715, 23.4285, 9.09181, -12.3215, 22.9285, 9.09181, -13.3215, 23.6785, 9.09181, -13.5715, 26.4285, 9.09181, -12.0715, 25.9285, 9.09181, -13.0715, 25.9285, 9.09181, -12.3215, 25.4285, 9.09181, -12.0715, 25.4285, 9.09181, -11.0715, -26.8215, 0.341813, 3.42846, -29.5715, 0.341813, 11.9285, -26.3215, 0.341813, 11.6785, -20.5715, 0.591813, 14.4285, -20.0715, 0.341813, 15.6785, -19.0715, 0.341813, 15.6785, -17.5715, 0.591813, 13.9285, -24.5715, 0.341813, 8.92846, -24.8215, 0.341813, 12.9285, -21.8215, 0.341813, 14.4285, -20.0715, 0.591813, 8.42846, -20.8215, 0.341813, 8.17846, -21.8215, 0.341813, 3.92846, -24.0715, 0.341813, 3.42846, -25.3215, 0.341813, 4.17846, -24.5715, 0.341813, 8.17846, -25.0715, 0.341813, 9.17846, -26.0715, 0.341813, 13.9285, -25.5715, 0.341813, 14.4285, -21.0715, 0.341813, 17.4285, -21.5715, 0.341813, 15.9285, -29.5715, 0.341813, 29.6785, -20.0715, 0.341813, 29.6785, -20.0715, 0.341813, 17.6785, -10.0715, 0.341813, 26.4285, -10.8215, 0.341813, 25.6785, -10.8215, 0.341813, 23.6785, -18.5715, 0.341813, 17.1785, 23.1785, 2.09181, 23.9285, 23.9285, 2.09181, 23.6785, 23.6785, 2.09181, 22.4285, 22.4285, 2.09181, 22.6785, 20.4285, 0.591813, 26.1785, 19.9285, 0.341813, 26.4285, 19.9285, 0.341813, 27.1785, 22.1785, 0.341813, 28.9285, 22.9285, 0.341813, 25.1785, 22.6785, 0.341813, 23.9285, 23.9285, 0.341813, 23.4285, 23.1785, 0.341813, 22.4285, 22.4285, 0.341813, 22.6785, 23.9285, 0.341813, 29.4285, 27.1785, 0.341813, 29.1785, 28.4285, 0.341813, 25.9285, 24.9285, 0.341813, 24.9285, 22.1785, 0.341813, 24.1785, 20.9285, 0.341813, 24.1785, 20.4285, 0.341813, 24.6785, 29.1785, 0.341813, 25.1785, 28.9285, 0.341813, 23.1785, 26.6785, 0.341813, 22.4285, 25.4285, 0.591813, 23.1785, 28.6785, 0.341813, 28.1785, -9.32154, 0.341813, 24.4285, -9.32154, 0.341813, 24.9285, -8.82154, 0.341813, 24.9285, -7.32154, 0.341813, 23.9285, -8.57154, 0.341813, 23.9285, -7.32154, 0.341813, 23.1785, -8.32154, 0.341813, 22.9285, 27.9285, 3.84181, 25.4285, 28.4285, 3.84181, 24.6785, 28.4285, 3.84181, 23.9285, 27.6785, 3.84181, 23.1785, 26.1785, 3.84181, 23.6785, 26.6785, 3.84181, 25.4285, 22.4285, 3.34181, 26.1785, 21.9285, 3.34181, 27.4285, 22.1785, 3.34181, 27.9285, 26.9285, 3.34181, 27.6785, 26.9285, 3.34181, 27.1785, 25.4285, 3.59181, 25.9285, 24.9285, 3.34181, 28.6785)
@@ -26,42 +30,29 @@ agent_max_slope = 15.0
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_eo0ht"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_w8bbp"]
+viewport_path = NodePath("Safe/3DHP/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47rn0"]
+bg_color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8so1p"]
+bg_color = Color(0.396396, 0.153953, 0.124497, 1)
+
 [node name="Deep Defense" type="Node3D"]
 script = ExtResource("1_vosc1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vswl3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.280147, 0.5838, 0.762034, -2.15274e-08, -0.793821, 0.608152, 0.959957, -0.170372, -0.222386, 30.5558, 28.0498, -31.1338)
 light_energy = 1.3
 
-[node name="Safe" parent="." instance=ExtResource("4_2im2f")]
-unique_name_in_owner = true
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.706436, 0)
-
-[node name="Sprite3D2" type="Sprite3D" parent="Safe"]
-transform = Transform3D(-1.63178e-08, 0, -1, 0, 1, 0, 0.373307, 0, -4.37114e-08, 0, 1.83359, 0)
-billboard = 1
-texture = SubResource("ViewportTexture_w8bbp")
-
-[node name="SubViewport" type="SubViewport" parent="Safe/Sprite3D2"]
-disable_3d = true
-transparent_bg = true
-size = Vector2i(1150, 27)
-
-[node name="HealthBar" type="ProgressBar" parent="Safe/Sprite3D2/SubViewport"]
-unique_name_in_owner = true
-offset_right = 1152.0
-offset_bottom = 27.0
-theme_override_styles/background = SubResource("StyleBoxFlat_47rn0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_8so1p")
-show_percentage = false
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 85.0648, 0)
 stream = ExtResource("5_cvbhm")
 autoplay = true
-
-[node name="shrimp" parent="." instance=ExtResource("4_iwc24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.748, 0, -14.902)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_ohwje")
@@ -119,3 +110,79 @@ tracker = &"left_hand"
 [node name="Right" type="XRController3D" parent="Player/xr_origin"]
 unique_name_in_owner = true
 tracker = &"right_hand"
+
+[node name="Safe" parent="." instance=ExtResource("4_2im2f")]
+unique_name_in_owner = true
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.706436, 0)
+
+[node name="3DHP" type="Sprite3D" parent="Safe"]
+transform = Transform3D(-1.63178e-08, 0, -1, 0, 1, 0, 0.373307, 0, -4.37114e-08, 0, 1.83359, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_w8bbp")
+
+[node name="SubViewport" type="SubViewport" parent="Safe/3DHP"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1150, 27)
+
+[node name="HealthBar" type="ProgressBar" parent="Safe/3DHP/SubViewport"]
+unique_name_in_owner = true
+offset_right = 1152.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_47rn0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8so1p")
+show_percentage = false
+
+[node name="Timers" type="Node3D" parent="."]
+
+[node name="BackgroundChanger" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 3.0
+autostart = true
+
+[node name="WaveSpawner" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 5.0
+autostart = true
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Spawners" type="Node3D" parent="."]
+
+[node name="EnemySpawner" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.949451, 0.00583601, -28.7341)
+
+[node name="EnemySpawner2" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4061, 0.00583601, -28.7341)
+
+[node name="EnemySpawner3" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.949451, 0.00583601, 27.3197)
+
+[node name="EnemySpawner4" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.4257, 0.00583601, 14.7728)
+
+[node name="EnemySpawner5" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2181, 0.00583601, -28.7341)
+
+[node name="EnemySpawner6" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7884, 0.00583601, -16.676)
+
+[node name="EnemySpawner7" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0802, 0.00583601, 15.9949)
+
+[node name="Totems" type="Node3D" parent="."]
+
+[node name="shrimptotem" parent="Totems" instance=ExtResource("10_5y7xf")]
+unique_name_in_owner = true
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.306538, 0.00583601, -30.1495)
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("9_wc1yn")]
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+
+[connection signal="timeout" from="Timers/BackgroundChanger" to="." method="_background_change_timeout"]
+[connection signal="timeout" from="Timers/WaveSpawner" to="." method="_next_wave_timeout"]
+[connection signal="visibility_changed" from="Totems/shrimptotem" to="." method="_on_shrimptotem_visibility_changed"]

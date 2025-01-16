@@ -7,7 +7,7 @@ se mueve por el suelo y ataca cuerpo a cuerpo con un hacha.
 extends PathFinderEnemy
 
 @onready var nav: NavigationAgent3D = $Navigation
-@onready var safe: Node3D = %Safe
+var safe
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var damage_range: Area3D = $DamageRange
 @onready var attack_range: Area3D = $AttackRange
@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 	# Do not move while attacking
 	if attacking:
 		return
-	
+
 	# Look at target
 	nav.target_position = target.global_position
 	look_at(nav.target_position)
@@ -58,10 +58,16 @@ func melee_entered(body: Node3D) -> void:
 		attack(body)
 
 func animation_finished(anim_name: StringName) -> void:
+	if not target:
+		return
+
 	if anim_name == "Attack":
 		attacking = false
 
 func attack(body: Node3D):
+	if not target:
+		return
+
 	attacking = true
 	animation.play("Attack")
 	
@@ -81,10 +87,16 @@ func attack(body: Node3D):
 # --------------------------------- DETECCION ----------------------------------
 # ------------------------------------------------------------------------------
 func detection_entered(body: Node3D) -> void:
+	if not target:
+		return
+
 	if body.name == "Player":
 		target = body
 
 func detection_exited(body: Node3D) -> void:
+	if not target:
+		return
+
 	if not enraged and body.name == target.name:
 		target = safe
 
@@ -92,8 +104,12 @@ func detection_exited(body: Node3D) -> void:
 # ------------------------------------ VIDA ------------------------------------
 # ------------------------------------------------------------------------------
 func take_damage(n: int):
+	if not target:
+		return
+
 	health -= n
 	animation.play("Damaged")
 	sounds.get_node("Damaged").play()
 	if health <= 0:
+		Global.shrimp_kills += 1
 		queue_free()

@@ -1,0 +1,184 @@
+[gd_scene load_steps=12 format=3 uid="uid://xkhv7dnms3ww"]
+
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_22kep"]
+[ext_resource type="Texture2D" uid="uid://b61rcjxhfxi24" path="res://assets/img/label_bg.png" id="1_ve6vb"]
+[ext_resource type="Texture2D" uid="uid://dyhk66s8w7mxo" path="res://assets/img/patrickbar-bg.png" id="2_52uc5"]
+[ext_resource type="Texture2D" uid="uid://ds46q0ahqps7k" path="res://assets/img/patrickbar-label.png" id="2_pfvfa"]
+[ext_resource type="Texture2D" uid="uid://ouy4hivdlu16" path="res://assets/img/patrickbar-fill.png" id="3_bljwl"]
+[ext_resource type="Theme" uid="uid://doko7rd0rwgs5" path="res://assets/font.tres" id="3_khrr1"]
+[ext_resource type="Texture2D" uid="uid://bbb8xnh1in5dt" path="res://assets/img/safebar-bg.png" id="6_uy0fk"]
+[ext_resource type="Texture2D" uid="uid://dywfwws660ajg" path="res://assets/img/safebar-fill.png" id="7_mvg2a"]
+[ext_resource type="Texture2D" uid="uid://cxvkgn3k3ja3r" path="res://assets/img/timer.png" id="9_10pp6"]
+[ext_resource type="Script" path="res://scripts/timer.gd" id="9_qhxvl"]
+
+[sub_resource type="SystemFont" id="SystemFont_wh6ux"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_22kep")
+
+[node name="PatrickBar" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 529.0
+offset_bottom = 53.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Counter" type="NinePatchRect" parent="PatrickBar"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+texture = ExtResource("1_ve6vb")
+region_rect = Rect2(0, 0, 120, 46)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Image" type="TextureRect" parent="PatrickBar/Counter"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -14.5
+offset_right = 47.0
+offset_bottom = 15.5
+grow_vertical = 2
+texture = ExtResource("2_pfvfa")
+
+[node name="Label" type="Label" parent="PatrickBar/Counter"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -19.5
+offset_right = -6.0
+offset_bottom = 20.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_khrr1")
+theme_override_fonts/font = SubResource("SystemFont_wh6ux")
+theme_override_font_sizes/font_size = 28
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="PatrickBar"]
+layout_mode = 2
+max_value = 15.0
+value = 10.0
+texture_under = ExtResource("2_52uc5")
+texture_progress = ExtResource("3_bljwl")
+
+[node name="Safebar" type="HBoxContainer" parent="."]
+offset_top = 40.0
+offset_right = 727.0
+offset_bottom = 93.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Counter" type="NinePatchRect" parent="Safebar"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+texture = ExtResource("1_ve6vb")
+region_rect = Rect2(0, 0, 120, 46)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Image" type="TextureRect" parent="Safebar/Counter"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -14.5
+offset_right = 47.0
+offset_bottom = 15.5
+grow_vertical = 2
+texture = ExtResource("2_pfvfa")
+
+[node name="Label" type="Label" parent="Safebar/Counter"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -19.5
+offset_right = -6.0
+offset_bottom = 20.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_khrr1")
+theme_override_fonts/font = SubResource("SystemFont_wh6ux")
+theme_override_font_sizes/font_size = 28
+text = "90
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Safebar"]
+layout_mode = 2
+value = 90.0
+texture_under = ExtResource("6_uy0fk")
+texture_progress = ExtResource("7_mvg2a")
+
+[node name="Timer" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+offset_left = 968.0
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 55.0
+texture = ExtResource("1_ve6vb")
+region_rect = Rect2(0, 0, 120, 46)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+script = ExtResource("9_qhxvl")
+
+[node name="Image" type="TextureRect" parent="Timer"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -24.5
+offset_right = 63.0
+offset_bottom = 24.5
+grow_vertical = 2
+texture = ExtResource("9_10pp6")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Timer"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -19.5
+offset_right = -6.0
+offset_bottom = 20.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("3_khrr1")
+theme_override_fonts/font = SubResource("SystemFont_wh6ux")
+theme_override_font_sizes/font_size = 28
+text = "00:00.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Timer"]
