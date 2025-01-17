@@ -7,11 +7,12 @@ se mueve por el suelo y ataca cuerpo a cuerpo con un hacha.
 extends PathFinderEnemy
 
 @onready var nav: NavigationAgent3D = $Navigation
-@onready var safe: Node3D = %Safe
+var safe
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var damage_range: Area3D = $DamageRange
 @onready var attack_range: Area3D = $AttackRange
 @onready var sounds: Node3D = $Sounds
+const type = "shrimp"
 
 # ------------------------------------------------------------------------------
 # ----------------------------- FUNCIONES NORMALES -----------------------------
@@ -24,15 +25,15 @@ func _ready():
 	speed = 1
 	
 	# Parámetros para el estado enfurecido
-	ex_speed = 2
-	ex_damage = 7
-	ex_atk_speed = 3
+	ex_speed = 1.5
+	ex_damage = 5
+	ex_atk_speed = 1.75
 
 func _physics_process(_delta: float) -> void:
 	# Do not move while attacking
-	if attacking:
+	if attacking or not target:
 		return
-	
+
 	# Look at target
 	nav.target_position = target.global_position
 	look_at(nav.target_position)
@@ -96,4 +97,5 @@ func take_damage(n: int):
 	animation.play("Damaged")
 	sounds.get_node("Damaged").play()
 	if health <= 0:
+		Global.shrimp_kills += 1
 		queue_free()

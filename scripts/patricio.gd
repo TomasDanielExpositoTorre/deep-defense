@@ -24,6 +24,7 @@ const BFREQ = 2
 const BAMP = 0.03
 var btime = 0
 var attacking = false
+var dying = false
 
 # XR variables
 @onready var xr_camera = $xr_origin/XRCamera3D
@@ -43,6 +44,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
 func _physics_process(delta: float) -> void:
+	if dying:
+		return
 	health = clamp(health+delta, 0, 15) # Player regeneration (1 HP/s)
 	if use_xr:
 		physics_xr(delta)
@@ -50,7 +53,6 @@ func _physics_process(delta: float) -> void:
 		physics_3d(delta)
 
 func physics_3d(delta):
-
 	var sprinting = Input.is_action_pressed("sprint")
 	var direction := Input.get_vector("left", "right", "up", "down")
 	var movement := (transform.basis * Vector3(direction.x, 0, direction.y)).normalized()
@@ -94,8 +96,6 @@ func physics_xr(delta):
 	var jumping = left_controller.is_button_pressed("ax_button") or right_controller.is_button_pressed("ax_button")
 	var attack = left_controller.is_button_pressed("trigger_click") or right_controller.is_button_pressed("trigger_click")
 
-
-		
 	var direction := (transform.basis * Vector3(dir.x, 0, dir.y)).normalized()
 	
 	# Handle jumping
@@ -103,23 +103,29 @@ func physics_xr(delta):
 		velocity += get_gravity() * delta
 	elif jumping:
 		velocity.y = JUMP_VELOCITY
-	
-	# Handle movement
-	if direction:
-		animation.play("Walking")
-		velocity.x = direction.x * (SPRINT_SPEED if sprinting else WALK_SPEED)
-		velocity.z = direction.z * (SPRINT_SPEED if sprinting else WALK_SPEED)
-	else:
+
+	if attacking:
 		velocity.x = 0
 		velocity.z = 0
-	
-	# Handle attack
-	if attacking:
-		animation.play("Attacking")
+	else:
+		if direction:
+			animation.play("Walking")
+			animation.speed_scale = 2 if sprinting else 1
+			velocity.x = direction.x * (SPRINT_SPEED if sprinting else WALK_SPEED)
+			velocity.z = direction.z * (SPRINT_SPEED if sprinting else WALK_SPEED)
+		else:
+			animation.play("Idle")
+			velocity.x = 0
+			velocity.z = 0
+		
+		if attack:
+			animation.play("Attacking")
+			animation.speed_scale = 4
+			attacking = true
 	
 	# Handle camera
 	if camdir:
-		rotate_y(-camdir.x * SENSITIVITY * 3)
+		rotate_y(-camdir.x * SENSITIVITY * 8)
 	move_and_slide()
 	
 
@@ -132,10 +138,18 @@ func _on_animation_finished(anim: StringName) -> void:
 		attacking = false
 
 func take_damage(n: int):
+	if dying:
+		return
 	health = clamp(health-n,0,15)
 	if health <= 0:
-		sounds.get_node("Death").play()
-		queue_free()
+		var death_sound = sounds.get_node("Death")
+		death_sound.play()
+		dying = true
 	else:
 		sounds.get_node("Damaged").play(0.09)
 	
+
+
+func _on_death_finished():
+	get_viewport().use_xr = false
+	get_tree().change_scene_to_file("res://scenes/final-screen.tscn")

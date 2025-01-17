@@ -23,8 +23,8 @@ var ex_damage = 1.1
 var ex_atk_speed = 1.1
 
 # Pathfinding
-@onready var target = %Safe
-@onready var player = %Player
+var target
+var player
 
 var attacking = false
 
@@ -48,3 +48,7 @@ func await_mapsync():
 func enrage():
 	enraged = true
 	target = player
+
+func restore():
+	enraged = false
+	

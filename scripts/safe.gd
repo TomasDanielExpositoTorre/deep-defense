@@ -24,3 +24,9 @@ func take_damage(n: int):
 		if health <= 0 and not open:
 			open = true
 			animation.play("Open")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Open":
+		get_viewport().use_xr = false
+		get_tree().change_scene_to_file("res://scenes/final-screen.tscn")
