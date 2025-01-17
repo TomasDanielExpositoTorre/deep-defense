@@ -12,10 +12,7 @@
 [ext_resource type="Script" path="res://scripts/timer.gd" id="9_qhxvl"]
 
 [sub_resource type="SystemFont" id="SystemFont_wh6ux"]
-<<<<<<< HEAD
 subpixel_positioning = 0
-=======
->>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -28,16 +25,10 @@ script = ExtResource("1_22kep")
 
 [node name="PatrickBar" type="HBoxContainer" parent="."]
 layout_mode = 0
-<<<<<<< HEAD
 offset_left = 5.0
 offset_top = 45.0
 offset_right = 535.0
 offset_bottom = 98.0
-=======
-offset_left = -1.0
-offset_right = 529.0
-offset_bottom = 53.0
->>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
 scale = Vector2(0.7, 0.7)
 
 [node name="Counter" type="NinePatchRect" parent="PatrickBar"]
@@ -90,17 +81,11 @@ texture_under = ExtResource("2_52uc5")
 texture_progress = ExtResource("3_bljwl")
 
 [node name="Safebar" type="HBoxContainer" parent="."]
-<<<<<<< HEAD
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 732.0
 offset_bottom = 58.0
-=======
-offset_top = 40.0
-offset_right = 727.0
-offset_bottom = 93.0
->>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
 scale = Vector2(0.7, 0.7)
 
 [node name="Counter" type="NinePatchRect" parent="Safebar"]
@@ -155,17 +140,10 @@ texture_progress = ExtResource("7_mvg2a")
 [node name="Timer" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
-<<<<<<< HEAD
 offset_left = 963.0
 offset_top = 5.0
 offset_right = 1147.0
 offset_bottom = 58.0
-=======
-offset_left = 968.0
-offset_top = 2.0
-offset_right = 1152.0
-offset_bottom = 55.0
->>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
 texture = ExtResource("1_ve6vb")
 region_rect = Rect2(0, 0, 120, 46)
 patch_margin_left = 8

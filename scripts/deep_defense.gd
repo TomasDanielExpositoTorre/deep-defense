@@ -11,10 +11,7 @@ const background_b = preload("res://assets/img/background-groupB.jpg")
 const background_nightmare = preload("res://assets/img/background-nightmare.jpg")
 
 var changed = false 
-<<<<<<< HEAD
 var wave_no=0
-=======
->>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
 @onready var shrimptotem: Node3D = %shrimptotem
 
 func _ready():
@@ -27,12 +24,8 @@ func _ready():
 		%Player.use_xr = true
 	else:
 		print("Using 3D")
-<<<<<<< HEAD
 	
 	_next_wave_timeout()
-=======
-
->>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
 
 func _background_change_timeout() -> void:
 	var bg = env.get_environment().sky.get_material()
@@ -45,12 +38,9 @@ func _background_change_timeout() -> void:
 			Global.totems = 2
 			bg.set_panorama(background_a)
 			shrimptotem.setup()
-<<<<<<< HEAD
 			for child in get_node("Enemies").get_children():
 				if child.type == "shrimp":
 					child.enrage()
-=======
->>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
 		elif group_b > group_a:
 			Global.totems = 2
 			bg.set_panorama(background_b)
@@ -58,17 +48,13 @@ func _background_change_timeout() -> void:
 			Global.totems = 4
 			shrimptotem.setup()
 			bg.set_panorama(background_nightmare)
-<<<<<<< HEAD
 			for child in get_node("Enemies").get_children():
 				child.enrage()
-=======
->>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
 	else:
 		changed = false
 		shrimptotem.shut_down()
 		Global.totems = 0
 		bg.set_panorama(background)
-<<<<<<< HEAD
 		for child in get_node("Enemies").get_children():
 			child.target = %Safe
 			child.safe = %Safe
@@ -104,25 +90,3 @@ func _on_shrimptotem_visibility_changed() -> void:
 		if child.type == "shrimp":
 			child.target = %Safe
 			child.restore()
-=======
-
-
-
-func _next_wave_timeout() -> void:
-	for child in get_node("Spawners").get_children():
-		var e = child.spawn_enemy()
-		get_node("Enemies").add_child(e)
-		e.target = %Safe
-		e.safe = %Safe
-		e.player = %Player
-		e.visible = true
-
-
-func _on_shrimptotem_visibility_changed() -> void:
-	if not shrimptotem:
-		return
-	if shrimptotem.visible == false and Global.totems == 0:
-		var bg = env.get_environment().sky.get_material()
-		bg.set_panorama(background)
-		
->>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
