@@ -59,10 +59,16 @@ func melee_entered(body: Node3D) -> void:
 		attack(body)
 
 func animation_finished(anim_name: StringName) -> void:
+	if not target:
+		return
+
 	if anim_name == "Attack":
 		attacking = false
 
 func attack(body: Node3D):
+	if not target:
+		return
+
 	attacking = true
 	animation.play("Attack")
 	
@@ -82,10 +88,16 @@ func attack(body: Node3D):
 # --------------------------------- DETECCION ----------------------------------
 # ------------------------------------------------------------------------------
 func detection_entered(body: Node3D) -> void:
+	if not target:
+		return
+
 	if body.name == "Player":
 		target = body
 
 func detection_exited(body: Node3D) -> void:
+	if not target:
+		return
+
 	if not enraged and body.name == target.name:
 		target = safe
 
@@ -93,6 +105,9 @@ func detection_exited(body: Node3D) -> void:
 # ------------------------------------ VIDA ------------------------------------
 # ------------------------------------------------------------------------------
 func take_damage(n: int):
+	if not target:
+		return
+
 	health -= n
 	animation.play("Damaged")
 	sounds.get_node("Damaged").play()

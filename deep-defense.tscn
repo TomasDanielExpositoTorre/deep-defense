@@ -137,12 +137,20 @@ show_percentage = false
 
 [node name="BackgroundChanger" type="Timer" parent="Timers"]
 unique_name_in_owner = true
+<<<<<<< HEAD
 wait_time = 180.0
+=======
+wait_time = 3.0
+>>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
 autostart = true
 
 [node name="WaveSpawner" type="Timer" parent="Timers"]
 unique_name_in_owner = true
+<<<<<<< HEAD
 wait_time = 30.0
+=======
+wait_time = 5.0
+>>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
 autostart = true
 
 [node name="Enemies" type="Node3D" parent="."]
@@ -150,6 +158,7 @@ autostart = true
 [node name="Spawners" type="Node3D" parent="."]
 
 [node name="EnemySpawner" parent="Spawners" instance=ExtResource("9_a1073")]
+<<<<<<< HEAD
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.949451, 0.00583601, -27.2592)
 
 [node name="EnemySpawner2" parent="Spawners" instance=ExtResource("9_a1073")]
@@ -163,6 +172,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7884, 0.00583601, -8.2474
 
 [node name="EnemySpawner5" parent="Spawners" instance=ExtResource("9_a1073")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0802, 0.00583601, 7.37905)
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.949451, 0.00583601, -28.7341)
+
+[node name="EnemySpawner2" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4061, 0.00583601, -28.7341)
+
+[node name="EnemySpawner3" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.949451, 0.00583601, 27.3197)
+
+[node name="EnemySpawner4" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.4257, 0.00583601, 14.7728)
+
+[node name="EnemySpawner5" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2181, 0.00583601, -28.7341)
+
+[node name="EnemySpawner6" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7884, 0.00583601, -16.676)
+
+[node name="EnemySpawner7" parent="Spawners" instance=ExtResource("9_a1073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0802, 0.00583601, 15.9949)
+>>>>>>> dbece146c15fc0bfb02cdd7f78a31c3345792086
 
 [node name="Totems" type="Node3D" parent="."]
 
