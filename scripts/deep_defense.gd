@@ -38,7 +38,7 @@ func totem_shutdown(totem, enetype):
 	totem.shut_down()
 	for child in get_node("Enemies").get_children():
 		if child.type == enetype:
-			child.target = child.player if child.type == "miniom" else child.safe
+			child.target = child.safe if child.type == "shrimp" else child.player
 			child.restore()
 			
 func _background_change_timeout() -> void:
@@ -75,7 +75,7 @@ func _next_wave_timeout() -> void:
 			get_node("Enemies").add_child(e)
 			e.safe = %Safe
 			e.player = %Player
-			e.target = e.player if e.type == "miniom" else e.safe
+			e.target = e.safe if e.type == "shrimp" else e.player
 
 			if Global.totems > 0:
 				if shrimptotem.visible and e.type == "shrimp":
@@ -83,7 +83,13 @@ func _next_wave_timeout() -> void:
 				elif miniomtotem.visible and e.type == "miniom":
 					e.enrage()
 			e.visible = true
-
+	
+	for child in get_node("MinaSpawners").get_children():
+		var spawn = randi_range(0,1)
+		spawn = true
+		if spawn:
+			var e = child.spawn_mina()
+			get_node("Minas").add_child(e)
 
 func _on_shrimptotem_visibility_changed() -> void:
 	if not shrimptotem or shrimptotem.visible:

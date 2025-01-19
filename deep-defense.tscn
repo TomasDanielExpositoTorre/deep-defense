@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cqgfir0eyso8x"]
+[gd_scene load_steps=22 format=3 uid="uid://cqgfir0eyso8x"]
 
 [ext_resource type="Script" path="res://scripts/deep_defense.gd" id="1_vosc1"]
 [ext_resource type="Texture2D" uid="uid://b2qyoa2qbcp4l" path="res://assets/img/background.jpg" id="2_6a5ts"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://xkhv7dnms3ww" path="res://scenes/HUD.tscn" id="9_wc1yn"]
 [ext_resource type="PackedScene" uid="uid://d1lr7lbvenr7e" path="res://scenes/shrimptotem.tscn" id="10_5y7xf"]
 [ext_resource type="PackedScene" uid="uid://khbohtys12b1" path="res://scenes/miniomtotem.tscn" id="11_yjbot"]
+[ext_resource type="PackedScene" uid="uid://dvph5hymb0muo" path="res://scenes/mina_spawner.tscn" id="12_cd0n3"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbnqm"]
 panorama = ExtResource("2_6a5ts")
@@ -164,6 +165,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7884, 0.00583601, -8.2474
 
 [node name="EnemySpawner5" parent="Spawners" instance=ExtResource("9_a1073")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0802, 0.00583601, 7.37905)
+
+[node name="MinaSpawners" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.076, -12.4959)
+
+[node name="MinaSpawner" parent="MinaSpawners" instance=ExtResource("12_cd0n3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.403, 15, -5.461)
+
+[node name="MinaSpawner2" parent="MinaSpawners" instance=ExtResource("12_cd0n3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.07, 15, 10.5)
+
+[node name="MinaSpawner3" parent="MinaSpawners" instance=ExtResource("12_cd0n3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.521, 15, 30.674)
+
+[node name="Minas" type="Node3D" parent="."]
 
 [node name="Totems" type="Node3D" parent="."]
 
