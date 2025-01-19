@@ -1,8 +1,7 @@
-[gd_scene load_steps=72 format=4 uid="uid://bi6uk0hhiv17p"]
+[gd_scene load_steps=71 format=4 uid="uid://bi6uk0hhiv17p"]
 
 [ext_resource type="Script" path="res://scripts/barcoche.gd" id="1_et755"]
-[ext_resource type="AudioStream" uid="uid://fo6tuxmbuis2" path="res://assets/music/axe-swing.mp3" id="1_gwynl"]
-[ext_resource type="AudioStream" uid="uid://bbyug17yekhvw" path="res://assets/music/shrimp-hort.mp3" id="2_ga2e0"]
+[ext_resource type="AudioStream" uid="uid://d2bedupd4rhsr" path="res://assets/music/006140987_prev.mp3" id="2_ccqpw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7jdw"]
 resource_name = "Material.001"
@@ -858,13 +857,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_s1eso")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fpef2"]
-radius = 1.0
-height = 9.78429
+[sub_resource type="BoxShape3D" id="BoxShape3D_3bq8x"]
+size = Vector3(1.96124, 5.21817, 5.32727)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ypj58"]
-radius = 0.887875
-height = 9.1552
+[sub_resource type="BoxShape3D" id="BoxShape3D_kyl7f"]
+size = Vector3(12.8338, 5.10461, 5.46069)
 
 [node name="Barcoche" type="CharacterBody3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
@@ -960,23 +957,18 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_mym2o")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.0315788, -0.999456, -0.00951375, 0.979, 0.0328476, -0.201195, 0.201398, -0.00296047, 0.979505, -0.170383, 2.52833, -0.0742302)
-shape = SubResource("CapsuleShape3D_fpef2")
-
-[node name="Sounds" type="Node3D" parent="."]
-
-[node name="Axe" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = ExtResource("1_gwynl")
-volume_db = -20.0
-
-[node name="Damaged" type="AudioStreamPlayer3D" parent="Sounds"]
-stream = ExtResource("2_ga2e0")
-
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.00586428, -0.999983, 0, 0.999983, 0.00586428, 0, 0, 0, 1, 0, 2.51921, 0)
-shape = SubResource("CapsuleShape3D_ypj58")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30942, 2.10909, -0.0617446)
+shape = SubResource("BoxShape3D_3bq8x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0941811, 2.05231, -0.0618897)
+shape = SubResource("BoxShape3D_kyl7f")
+
+[node name="Crash" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_ccqpw")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="finished" from="Crash" to="." method="_on_crash_finished"]
