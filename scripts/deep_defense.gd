@@ -32,6 +32,7 @@ func totem_setup(totem, enetype):
 	totem.setup()
 	for child in get_node("Enemies").get_children():
 		if child.type == enetype:
+			child.target = child.safe if child.type == "miniom" else child.player
 			child.enrage()
 
 func totem_shutdown(totem, enetype):
