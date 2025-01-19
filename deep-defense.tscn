@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqgfir0eyso8x"]
+[gd_scene load_steps=21 format=3 uid="uid://cqgfir0eyso8x"]
 
 [ext_resource type="Script" path="res://scripts/deep_defense.gd" id="1_vosc1"]
 [ext_resource type="Texture2D" uid="uid://b2qyoa2qbcp4l" path="res://assets/img/background.jpg" id="2_6a5ts"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b3jnd1gh3dn1u" path="res://scenes/enemy_spawner.tscn" id="9_a1073"]
 [ext_resource type="PackedScene" uid="uid://xkhv7dnms3ww" path="res://scenes/HUD.tscn" id="9_wc1yn"]
 [ext_resource type="PackedScene" uid="uid://d1lr7lbvenr7e" path="res://scenes/shrimptotem.tscn" id="10_5y7xf"]
+[ext_resource type="PackedScene" uid="uid://khbohtys12b1" path="res://scenes/miniomtotem.tscn" id="11_yjbot"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dbnqm"]
 panorama = ExtResource("2_6a5ts")
@@ -137,7 +138,7 @@ show_percentage = false
 
 [node name="BackgroundChanger" type="Timer" parent="Timers"]
 unique_name_in_owner = true
-wait_time = 180.0
+wait_time = 10.0
 autostart = true
 
 [node name="WaveSpawner" type="Timer" parent="Timers"]
@@ -169,7 +170,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0802, 0.00583601, 7.37905)
 [node name="shrimptotem" parent="Totems" instance=ExtResource("10_5y7xf")]
 unique_name_in_owner = true
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.306538, 0.00583601, -30.1495)
-visible = false
+
+[node name="MINIOMtotem" parent="Totems" instance=ExtResource("11_yjbot")]
+unique_name_in_owner = true
+transform = Transform3D(-0.99614, 0, -0.0877816, 0, 1, 0, 0.0877816, 0, -0.99614, 0.284429, 0.131381, 31.0148)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -180,3 +184,4 @@ mouse_force_pass_scroll_events = false
 [connection signal="timeout" from="Timers/BackgroundChanger" to="." method="_background_change_timeout"]
 [connection signal="timeout" from="Timers/WaveSpawner" to="." method="_next_wave_timeout"]
 [connection signal="visibility_changed" from="Totems/shrimptotem" to="." method="_on_shrimptotem_visibility_changed"]
+[connection signal="visibility_changed" from="Totems/MINIOMtotem" to="." method="_on_miniomtotem_visibility_changed"]

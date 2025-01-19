@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dkwb36afcp1nv"
+path="res://.godot/imported/Voicy_Banana 2.mp3-696a59e3ad5a7020eaeb1267f4c49047.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Voicy_Banana 2.mp3"
+dest_files=["res://.godot/imported/Voicy_Banana 2.mp3-696a59e3ad5a7020eaeb1267f4c49047.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

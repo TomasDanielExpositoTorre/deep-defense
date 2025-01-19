@@ -13,6 +13,7 @@ const background_nightmare = preload("res://assets/img/background-nightmare.jpg"
 var changed = false 
 var wave_no=0
 @onready var shrimptotem: Node3D = %shrimptotem
+@onready var miniomtotem: StaticBody3D = %MINIOMtotem
 
 func _ready():
 	xr_interface = XRServer.find_interface("OpenXR")
@@ -27,54 +28,59 @@ func _ready():
 	
 	_next_wave_timeout()
 
+func totem_setup(totem, enetype):
+	totem.setup()
+	for child in get_node("Enemies").get_children():
+		if child.type == enetype:
+			child.enrage()
+
+func totem_shutdown(totem, enetype):
+	totem.shut_down()
+	for child in get_node("Enemies").get_children():
+		if child.type == enetype:
+			child.target = child.player if child.type == "miniom" else child.safe
+			child.restore()
+			
 func _background_change_timeout() -> void:
 	var bg = env.get_environment().sky.get_material()
-	var group_a = Global.shrimp_kills + Global.minion_kills
-	var group_b = Global.fish_kills + Global.other_kills
 	
 	if not changed:
 		changed = true
-		if group_a > group_b:
-			Global.totems = 2
+		if Global.shrimp_kills > Global.minion_kills:
+			Global.totems = 1
 			bg.set_panorama(background_a)
-			shrimptotem.setup()
-			for child in get_node("Enemies").get_children():
-				if child.type == "shrimp":
-					child.enrage()
-		elif group_b > group_a:
-			Global.totems = 2
+			totem_setup(shrimptotem, "shrimp")
+		elif Global.minion_kills > Global.shrimp_kills:
+			Global.totems = 1
 			bg.set_panorama(background_b)
+			totem_setup(miniomtotem, "miniom")
 		else:
-			Global.totems = 4
-			shrimptotem.setup()
+			Global.totems = 2
 			bg.set_panorama(background_nightmare)
-			for child in get_node("Enemies").get_children():
-				child.enrage()
+			totem_setup(shrimptotem, "shrimp")
+			totem_setup(miniomtotem, "miniom")
 	else:
-		changed = false
-		shrimptotem.shut_down()
 		Global.totems = 0
+		changed = false
 		bg.set_panorama(background)
-		for child in get_node("Enemies").get_children():
-			child.target = %Safe
-			child.safe = %Safe
-			child.restore()
-
+		totem_shutdown(shrimptotem, "shrimp")
+		totem_shutdown(miniomtotem, "miniom")
 
 func _next_wave_timeout() -> void:
 	wave_no += 1
 	
 	for child in get_node("Spawners").get_children():
-		var a = randi_range(max(1, int(wave_no/3)), int(wave_no/2)+1)
-		for _i in range(a):
+		for _i in range(randi_range(max(1, int(wave_no/3)), int(wave_no/2)+1)):
 			var e = child.spawn_enemy()
 			get_node("Enemies").add_child(e)
-			e.target = %Safe
 			e.safe = %Safe
 			e.player = %Player
-		
+			e.target = e.player if e.type == "miniom" else e.safe
+
 			if Global.totems > 0:
 				if shrimptotem.visible and e.type == "shrimp":
+					e.enrage()
+				elif miniomtotem.visible and e.type == "miniom":
 					e.enrage()
 			e.visible = true
 
@@ -89,4 +95,17 @@ func _on_shrimptotem_visibility_changed() -> void:
 	for child in get_node("Enemies").get_children():
 		if child.type == "shrimp":
 			child.target = %Safe
+			child.restore()
+
+
+func _on_miniomtotem_visibility_changed() -> void:
+	if not miniomtotem or miniomtotem.visible:
+		return
+	if Global.totems == 0:
+		var bg = env.get_environment().sky.get_material()
+		bg.set_panorama(background)
+	
+	for child in get_node("Enemies").get_children():
+		if child.type == "miniom":
+			child.target = %Player
 			child.restore()
