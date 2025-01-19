@@ -21,9 +21,17 @@ XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd
 XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
 Global="*res://scripts/Global.gd"
 
+[dotnet]
+
+project/assembly_name="Deep Defense"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

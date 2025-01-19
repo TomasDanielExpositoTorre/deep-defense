@@ -86,9 +86,15 @@ func _next_wave_timeout() -> void:
 	
 	for child in get_node("MinaSpawners").get_children():
 		var spawn = randi_range(0,1)
-		spawn = true
 		if spawn:
 			var e = child.spawn_mina()
+			get_node("Minas").add_child(e)
+			
+	for child in get_node("cocheSpawner").get_children():
+		var spawn = randi_range(0,1)
+		spawn = true
+		if spawn:
+			var e = child.spawn_barcoche()
 			get_node("Minas").add_child(e)
 
 func _on_shrimptotem_visibility_changed() -> void:
